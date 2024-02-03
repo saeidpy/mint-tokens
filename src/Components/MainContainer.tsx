@@ -68,7 +68,7 @@ function MainContainer() {
             </>
           </Stack>
         ) : (
-          <Stack flexDirection="row" justifyContent="space-between" flexWrap="wrap">
+          <Stack flexDirection="row" justifyContent="space-between" flexWrap="wrap" gap={2}>
             <Typography variant="h6">connect to wallet</Typography>
             <WalletOptions />
           </Stack>

@@ -8,7 +8,8 @@ export function WalletOptions() {
   if (connectors.length === 0) {
     return (
       <Typography color="error">
-        There is no available web wallet option.
+        There is no web wallet option accessible. To proceed, kindly install
+        MetaMask.
       </Typography>
     );
   }

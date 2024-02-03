@@ -56,9 +56,7 @@ const TransactionCompleted = () => {
           </g>
         </g>
       </svg>
-      <Typography mb={2}>
-        Transaction completed!
-      </Typography>
+      <Typography mb={2}>Transaction successfully executed!</Typography>
       <Button variant="outlined" onClick={onClick}>
         go back
       </Button>
