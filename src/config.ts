@@ -1,4 +1,3 @@
-//@ts-nocheck
 import { createConfig, http } from "wagmi";
 import { goerli } from "wagmi/chains";
 

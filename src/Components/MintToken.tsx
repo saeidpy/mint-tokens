@@ -1,12 +1,11 @@
-//@ts-nocheck
 import { Button, Container, Stack, TextField, Typography } from "@mui/material";
 import { useFormContext } from "react-hook-form";
 import { parseEther } from "viem";
 import { useWriteContract, type BaseError } from "wagmi";
 import { abi } from "../abi";
 import { SMART_CONTRACT_ADDRESS } from "../config";
-import StatusDialog from "./StatusDialog";
 import { FormFields } from "./MainContainer";
+import StatusDialog from "./StatusDialog";
 
 const MintToken = () => {
   const { data: hash, writeContract, isPending, error } = useWriteContract();
@@ -21,12 +20,12 @@ const MintToken = () => {
     setValue("step", 1, { shouldDirty: true });
   };
 
-  const onSubmit = ({ tokens }: { tokens: string }) => {
+  const onSubmit = ({ tokens }: FormFields) => {
     writeContract({
       address: SMART_CONTRACT_ADDRESS,
       abi,
       functionName: "mint",
-      args: [parseEther(tokens)],
+      args: [parseEther(tokens!)],
     });
   };
 
@@ -44,11 +43,9 @@ const MintToken = () => {
             helperText={errors?.tokens?.message}
             {...register("tokens", {
               pattern: {
-                value: /^(0|[1-9]\d*)(\.\d+)?$/,
-                message: "Please enter a number",
+                value: /^(?!0\d)\d*(\.\d+)?$/,
+                message: "Number of tokens must be greater that 0.",
               },
-              validate: (value) =>
-                value > 0 ? true : "Number of tokens must be greater that 0.",
             })}
           />
           <Button
