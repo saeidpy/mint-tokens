@@ -40,7 +40,7 @@ function MainContainer() {
     <FormProvider {...methods}>
       <AppBar position="static">
         <Container maxWidth="md">
-          <Stack flexDirection="row">
+          <Stack flexDirection="row" height={64} alignItems="center">
             <Typography variant="h6" sx={{ flexGrow: 1 }}>
               Token Manager
             </Typography>
@@ -68,7 +68,7 @@ function MainContainer() {
             </>
           </Stack>
         ) : (
-          <Stack flexDirection="row" justifyContent="space-between">
+          <Stack flexDirection="row" justifyContent="space-between" flexWrap="wrap">
             <Typography variant="h6">connect to wallet</Typography>
             <WalletOptions />
           </Stack>

@@ -1,9 +1,17 @@
-import { Button } from "@mui/material";
+import { Button, Typography } from "@mui/material";
 import { useEffect, useState } from "react";
 import { Connector, useConnect } from "wagmi";
 
 export function WalletOptions() {
   const { connectors, connect } = useConnect();
+
+  if (connectors.length === 0) {
+    return (
+      <Typography color="error">
+        There is no available web wallet option.
+      </Typography>
+    );
+  }
 
   return (
     <>
