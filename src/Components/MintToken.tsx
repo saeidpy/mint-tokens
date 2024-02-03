@@ -43,9 +43,13 @@ const MintToken = () => {
             helperText={errors?.tokens?.message}
             {...register("tokens", {
               pattern: {
-                value: /^(?!0\d)\d*(\.\d+)?$/,
-                message: "Number of tokens must be greater that 0.",
+                value: /^(0|[1-9]\d*)(\.\d+)?$/,
+                message: "Please enter a number",
               },
+              validate: (value) =>
+                parseFloat(value ?? "") > 0
+                  ? true
+                  : "Number of tokens must be greater that 0.",
             })}
           />
           <Button
